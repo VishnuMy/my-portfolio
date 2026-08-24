@@ -1,1 +1,46 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Integration Moat Is Shrinking | Vishnu Mynampati</title><link rel="stylesheet" href="../styles.css"></head><body><nav class="nav wrap"><a class="brand" href="../index.html">VM</a><div><a href="../index.html#projects">Projects</a><a href="../writing.html">Writing</a><a href="../notes.html">Notes</a><a href="https://github.com/VishnuMy">GitHub</a></div></nav><main><article class="article wrap"><p class="eyebrow">OP-ED · MCP · AI ARCHITECTURE</p><h1>The Integration Moat Is Shrinking</h1><p class="lede">What MCP means for LangChain, LangGraph, and framework-heavy AI stacks.</p><p class="byline">Vishnu Mynampati · 2026</p><h2>The original value proposition is changing.</h2><p>Frameworks such as LangChain became valuable partly because connecting models to tools, data sources, retrievers, APIs, and application logic was messy. They gave developers a common abstraction over a fragmented integration layer.</p><p>MCP changes that equation. As models, agents, and applications converge on a common protocol for exposing and consuming capabilities, a growing portion of framework-specific integration plumbing becomes standardized infrastructure.</p><p>That does not make orchestration frameworks useless. It changes what they must be good at.</p><h2>Protocol is not orchestration.</h2><p>MCP can tell an AI application what capabilities are available and provide a standard way to invoke them. It does not decide which business process deserves an agent, how state should be managed across a long-running workflow, what retry policy is acceptable, whether a result is grounded, when a human must approve an action, or whether the economics justify deployment.</p><p>Those problems remain. They simply move above the interoperability layer.</p><h2>The moat moves upward.</h2><p>The durable value in an AI stack increasingly sits in orchestration, state, evaluation, observability, policy, security, economics, and developer experience. A framework that excels there can remain highly relevant. A framework whose primary value is proprietary connectors has a weaker moat in an MCP-first world.</p><p>That is why I do not think the useful question is “Does MCP kill LangChain?” The better question is: <strong>Which parts of today's AI framework stack become commodities when interoperability becomes a protocol?</strong></p><h2>My thesis</h2><p>MCP will not eliminate orchestration. It will pressure orchestration frameworks to justify themselves above the integration layer. Over time, developers should need fewer framework-specific adapters and gain more freedom to compose tools, models, agents, and enterprise systems across vendors.</p><p>The likely winner is not “MCP instead of frameworks.” It is a thinner, more modular stack in which the protocol handles interoperability and frameworks compete on the hard operating problems that protocols intentionally do not solve.</p><div class="article-end"><a href="../writing.html">← More writing</a><a href="https://github.com/VishnuMy/mcp-patterns">See the MCP patterns repo →</a></div></article></main><footer class="wrap">VISHNU MYNAMPATI · ENTERPRISE AI SYSTEMS · 2026</footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Integration Moat Is Shrinking | Vishnu Mynampati</title>
+  <meta name="description" content="What MCP means for LangChain, LangGraph, and framework-heavy AI stacks." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="nav-shell"><nav class="nav wrap"><a class="brand" href="../index.html">VM<span>.</span></a><div class="nav-links"><a href="../index.html#work">Work</a><a href="../writing.html">Writing</a><a href="../notes.html">Notes</a><a href="../index.html#about">About</a></div><a class="nav-cta" href="https://github.com/VishnuMy">GitHub ↗</a></nav></header>
+  <main>
+    <article class="longform wrap">
+      <header class="longform-head">
+        <p class="kicker">OP-ED · MCP · AI ARCHITECTURE</p>
+        <h1>The Integration Moat Is Shrinking</h1>
+        <p class="standfirst">What MCP means for LangChain, LangGraph, and framework-heavy AI stacks.</p>
+        <div class="byline-row"><span>Vishnu Mynampati</span><span>2026</span><span>7 min read</span></div>
+      </header>
+      <div class="longform-body">
+        <aside class="article-aside"><span>THESIS 001</span><p>MCP does not eliminate orchestration. It separates interoperability from orchestration and forces frameworks to compete higher in the stack.</p></aside>
+        <div class="prose">
+          <h2>The original value proposition is changing.</h2>
+          <p>Frameworks such as LangChain became valuable partly because connecting models to tools, data sources, retrievers, APIs, and application logic was messy. They gave developers a common abstraction over a fragmented integration layer.</p>
+          <p>MCP changes that equation. As models, agents, and applications converge on a common protocol for exposing and consuming capabilities, a growing portion of framework-specific integration plumbing becomes standardized infrastructure.</p>
+          <p>That does not make orchestration frameworks useless. It changes what they must be good at.</p>
+          <h2>Protocol is not orchestration.</h2>
+          <p>MCP can tell an AI application what capabilities are available and provide a standard way to invoke them. It does not decide which business process deserves an agent, how state should be managed across a long-running workflow, what retry policy is acceptable, whether a result is grounded, when a human must approve an action, or whether the economics justify deployment.</p>
+          <p>Those problems remain. They simply move above the interoperability layer.</p>
+          <blockquote class="pullquote">The useful question is not whether MCP kills frameworks. It is which parts of today’s framework stack become commodities when interoperability becomes a protocol.</blockquote>
+          <h2>The moat moves upward.</h2>
+          <p>The durable value in an AI stack increasingly sits in orchestration, state, evaluation, observability, policy, security, economics, and developer experience. A framework that excels there can remain highly relevant. A framework whose primary value is proprietary connectors has a weaker moat in an MCP-first world.</p>
+          <h2>My thesis</h2>
+          <p>MCP will not eliminate orchestration. It will pressure orchestration frameworks to justify themselves above the integration layer. Over time, developers should need fewer framework-specific adapters and gain more freedom to compose tools, models, agents, and enterprise systems across vendors.</p>
+          <p>The likely winner is not “MCP instead of frameworks.” It is a thinner, more modular stack in which the protocol handles interoperability and frameworks compete on the hard operating problems that protocols intentionally do not solve.</p>
+          <div class="article-end"><a href="../writing.html">← More writing</a><a href="https://github.com/VishnuMy/mcp-patterns">MCP patterns repo ↗</a></div>
+        </div>
+      </div>
+    </article>
+  </main>
+  <footer class="footer wrap"><div><strong>Vishnu Mynampati</strong><span>Enterprise AI Transformation</span></div><div class="footer-right">Writing · Architecture · Economics</div></footer>
+</body>
+</html>
