@@ -1,1 +1,30 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Notes | Vishnu Mynampati</title><link rel="stylesheet" href="styles.css"></head><body><nav class="nav wrap"><a class="brand" href="index.html">VM</a><div><a href="index.html#projects">Projects</a><a href="writing.html">Writing</a><a href="notes.html">Notes</a><a href="https://github.com/VishnuMy">GitHub</a></div></nav><main><section class="hero wrap compact"><p class="eyebrow">FIELD NOTES</p><h1>Small ideas. Practical consequences.</h1><p class="lede">Short observations from enterprise AI delivery. These are deliberately lighter than essays and often become code, architecture patterns, or longer arguments later.</p></section><section class="wrap section"><div class="notes-grid"><article><span>ECONOMICS</span><h3>Retry Tax</h3><p>A system can look cheap per model call and still be expensive per successful task. Retries, fallbacks, human escalation, and tool failures belong in the denominator.</p></article><article><span>GOVERNANCE</span><h3>Agent Sprawl</h3><p>When every team can create agents quickly, discovery and reuse become architecture problems. The registry is not the transformation engine, but the engine needs one.</p></article><article><span>CONTEXT</span><h3>Context Inflation</h3><p>More context is not free. It raises latency, spend, and sometimes confusion. Context should be treated as a budgeted resource, not an unlimited prompt attachment.</p></article><article><span>ARCHITECTURE</span><h3>Not Everything Needs an Agent</h3><p>If a deterministic workflow solves the problem reliably, adding an agent can increase cost and failure surface without increasing business value.</p></article><article><span>INTEROPERABILITY</span><h3>Protocol ≠ Orchestration</h3><p>MCP can standardize access to capabilities. It does not decide which capability should run, whether it is safe, or whether the result deserves production trust.</p></article><article><span>OPERATING MODEL</span><h3>Agents Within Agents</h3><p>Nested agent systems amplify ownership, prompt variance, observability, and evaluation problems. Composition needs lifecycle controls, not only clever routing.</p></article></div></section></main><footer class="wrap">VISHNU MYNAMPATI · FIELD NOTES · 2026</footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Field Notes | Vishnu Mynampati</title>
+  <meta name="description" content="Short notes on AI economics, agent sprawl, context inflation, MCP, and enterprise AI architecture." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav-shell"><nav class="nav wrap"><a class="brand" href="index.html">VM<span>.</span></a><div class="nav-links"><a href="index.html#work">Work</a><a href="writing.html">Writing</a><a href="notes.html">Notes</a><a href="index.html#about">About</a></div><a class="nav-cta" href="https://github.com/VishnuMy">GitHub ↗</a></nav></header>
+  <main>
+    <section class="article-hero wrap"><p class="kicker">FIELD NOTES</p><h1>Small ideas. Practical consequences.</h1><p>Short observations from enterprise AI delivery. These are deliberately lighter than essays and often become architecture patterns, experiments, or longer arguments later.</p></section>
+    <section class="note-list wrap">
+      <article class="note-card"><span>ECONOMICS</span><h2>Retry Tax</h2><p>A system can look cheap per model call and still be expensive per successful task. Retries, fallbacks, human escalation, and tool failures belong in the denominator.</p></article>
+      <article class="note-card"><span>GOVERNANCE</span><h2>Agent Sprawl</h2><p>When every team can create agents quickly, discovery and reuse become architecture problems. The registry is not the transformation engine, but the engine needs one.</p></article>
+      <article class="note-card"><span>CONTEXT</span><h2>Context Inflation</h2><p>More context is not free. It raises latency, spend, and sometimes confusion. Context should be treated as a budgeted resource, not an unlimited prompt attachment.</p></article>
+      <article class="note-card"><span>ARCHITECTURE</span><h2>Not Everything Needs an Agent</h2><p>If a deterministic workflow solves the problem reliably, adding an agent can increase cost and failure surface without increasing business value.</p></article>
+      <article class="note-card"><span>INTEROPERABILITY</span><h2>Protocol ≠ Orchestration</h2><p>MCP can standardize access to capabilities. It does not decide which capability should run, whether it is safe, or whether the result deserves production trust.</p></article>
+      <article class="note-card"><span>OPERATING MODEL</span><h2>Agents Within Agents</h2><p>Nested agent systems amplify ownership, prompt variance, observability, and evaluation problems. Composition needs lifecycle controls, not only clever routing.</p></article>
+      <article class="note-card"><span>ARCHITECTURE</span><h2>Abstraction Tax</h2><p>Framework abstractions are useful only when their productivity gains exceed the debugging opacity, dependency surface, and portability cost they introduce.</p></article>
+      <article class="note-card"><span>EVALUATION</span><h2>Cost per Successful Task</h2><p>Cost per API call is often the wrong unit. The useful denominator is a completed task that meets quality, safety, and latency thresholds.</p></article>
+    </section>
+  </main>
+  <footer class="footer wrap"><div><strong>Vishnu Mynampati</strong><span>Enterprise AI Transformation</span></div><div class="footer-right">Notes · Patterns · Observations</div></footer>
+</body>
+</html>
