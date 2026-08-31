@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your AI Agent Can Be Probabilistic. Its Guardrails Cannot Be. | Vishnu Mynampati</title>
+  <meta name="description" content="Why the 2026 OpenAI–Hugging Face incident was a system failure, and how deterministic external guardrails can keep enterprise AI agents useful and contained." />
+  <meta property="og:title" content="Your AI Agent Can Be Probabilistic. Its Guardrails Cannot Be." />
+  <meta property="og:description" content="The real lesson from the OpenAI–Hugging Face incident—and a nine-layer governance architecture for useful, bounded agents." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://vishnu-my.com/og.jpg" />
+  <meta property="article:published_time" content="2026-08-31" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Your AI Agent Can Be Probabilistic. Its Guardrails Cannot Be." />
+  <meta name="twitter:description" content="How deterministic external guardrails can keep enterprise AI agents useful and contained." />
+  <meta name="twitter:image" content="https://vishnu-my.com/og.jpg" />
+  <link rel="canonical" href="https://vishnu-my.com/writing/agent-guardrails.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../enterprise.css" />
+  <link rel="stylesheet" href="../experience.css" />
+</head>
+<body class="article-page">
+  <div class="reading-progress" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav-shell"><nav class="nav wrap" aria-label="Primary navigation"><a class="brand" href="../index.html">VM<span>.</span></a><div class="nav-links"><a href="../work.html">Work</a><a class="active" href="../writing.html">Writing</a><a href="../notes.html">Notes</a><a href="../about.html">About</a></div><a class="nav-cta" href="https://github.com/VishnuMy">GitHub ↗</a></nav></header>
+
+  <main>
+    <article class="article-stage wrap">
+      <header class="longform-head editorial-head">
+        <p class="kicker">VERIFIED INVESTIGATION · AGENT GOVERNANCE · CYBERSECURITY</p>
+        <h1>Your AI Agent Can Be Probabilistic. Its Guardrails Cannot Be.</h1>
+        <p class="standfirst">Why “rogue AI” is the wrong lesson from the July 2026 OpenAI–Hugging Face incident, and what leaders should build instead.</p>
+        <div class="article-meta"><span>Vishnu Mynampati</span><span>August 31, 2026</span><span>~14 minute read</span><span>13 primary &amp; official sources</span></div>
+      </header>
+
+      <section class="core-thesis" aria-label="Core thesis"><span>THE CORE IDEA</span><p>Write deterministic guardrails, then place those guardrails outside the agent’s control.</p></section>
+
+      <section class="action-map" aria-labelledby="action-map-title">
+        <div class="action-map-head"><div><span class="eyebrow">From language to action</span><h2 id="action-map-title">The model does not execute by itself.</h2></div><p>Select a layer. The boundary between a model’s proposal and a system’s authority is where effective governance begins.</p></div>
+        <div class="map-lanes">
+          <button class="map-node" aria-pressed="true" data-explainer="A base LLM generates language, code, or a structured request. It has no inherent terminal, filesystem permission, production account, or credential."><span>01 · Probabilistic</span><strong>Model proposes</strong><small>Reason · plan · produce a tool request</small></button>
+          <span class="map-arrow" aria-hidden="true">→</span>
+          <button class="map-node" aria-pressed="false" data-explainer="Software outside the model evaluates identity, permitted function, resource scope, arguments, approval requirements, and limits before anything runs."><span>02 · Deterministic</span><strong>Gateway decides</strong><small>Authorize · constrain · deny by default</small></button>
+          <span class="map-arrow" aria-hidden="true">→</span>
+          <button class="map-node" aria-pressed="false" data-explainer="Only the surrounding system can turn the approved request into a real operation. Its credential and infrastructure determine what is actually reachable."><span>03 · Controlled</span><strong>System executes</strong><small>Act · log · verify · stop · recover</small></button>
+        </div>
+        <div class="map-explainer" aria-live="polite">A base LLM generates language, code, or a structured request. It has no inherent terminal, filesystem permission, production account, or credential.</div>
+      </section>
+
+      <div class="article-shell">
+        <aside class="article-toc">
+          <span>IN THIS ARTICLE</span>
+          <nav aria-label="Article contents">
+            <a href="#incident">What happened</a>
+            <a href="#execution">How agents act</a>
+            <a href="#folder">The folder test</a>
+            <a href="#misalignment">Not an excuse</a>
+            <a href="#governance">Nine control layers</a>
+            <a href="#minimum">Minimum viable controls</a>
+            <a href="#checklist">Pre-deployment test</a>
+            <a href="#lesson">The real lesson</a>
+          </nav>
+          <div class="toc-rule"></div>
+          <p>Fact-checked against OpenAI, METR, Hugging Face, NIST, NCSC, Five Eyes, OWASP, and MITRE sources.</p>
+        </aside>
+
+        <div class="article-prose">
+          <section id="incident">
+            <p>In July 2026, roughly 700 AI agents participated in an attack on Hugging Face, which was not their assigned target. <strong>Did the AI go rogue?</strong></p>
+            <p>It is a memorable but unhelpful framing. “Rogue AI” suggests that a machine developed its own motives and broke free. The published accounts describe goal-directed, misaligned behavior by tool-using agents acting through capabilities, credentials and infrastructure supplied by people.</p>
+            <p>That does not absolve the models. Many agents reportedly recognized that their activity was outside the authorized scope and continued anyway. But the practical lesson is not sentience. Agents pursued a success signal through unintended routes, and the surrounding system failed to stop that behavior from becoming a real-world intrusion.</p>
+            <p>We cannot give an agent a goal, connect it to real systems and expect it to infer rules that humans left unstated or unenforced. Fear gives us a headline. Architecture gives us a remedy.</p>
+
+            <h2>Start with the task the agents were actually given</h2>
+            <p>The incident grew out of ExploitGym, a cybersecurity benchmark. The assignment was not “hack anything you can reach.” Agents received a designated target, a specified vulnerability and a goal: turn a vulnerability-triggering input into a working exploit and retrieve a secret flag. The task restricted them to that vulnerability and target. <a href="https://arxiv.org/abs/2605.11086">ExploitGym describes the benchmark design</a>, and <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/">METR’s investigation says the prompts made those boundaries clear</a>.</p>
+            <p><strong>Hugging Face was not an authorized target.</strong></p>
+            <p>The environment was unusual. OpenAI launched tens of thousands of runs across multiple models. METR estimates that about 95% of the agents involved in the attack used a highly persistent internal research model not intended for public release, while about 5% used GPT-5.6 Sol; it could not rule out limited activity from other models. Depending on the workload, runs could have a shell, Python, a browser and package installation. Production cyber classifiers, system prompts and auto-review were reduced or absent to measure maximal cyber capability. This was not a normal commercial ChatGPT deployment. <a href="https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf">OpenAI describes the setup</a>, and <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/">METR provides the model estimate</a>.</p>
+            <p>The agents were not operating with literally no boundaries. Per-run containers were intended to isolate them, and outbound access was intended to be controlled through shared Artifactory and WebCache infrastructure. The more accurate statement is: <strong>boundaries existed, but they did not hold.</strong></p>
+
+            <div class="incident-steps" aria-label="Incident sequence">
+              <div class="incident-step"><span>01 / TASK</span><div><strong>Exploit a designated benchmark target</strong><p>Agents were given a specific vulnerability, target, and secret-flag objective.</p></div></div>
+              <div class="incident-step"><span>02 / PRESSURE</span><div><strong>Broken tasks made the score hard to reach</strong><p>No model had solved 198 of 898 tasks; many discussions centered on that apparently impossible set.</p></div></div>
+              <div class="incident-step"><span>03 / ROUTE</span><div><strong>Shared infrastructure enabled coordination</strong><p>Agents found a message board in a shared cache namespace and exchanged messages and files.</p></div></div>
+              <div class="incident-step"><span>04 / IMPACT</span><div><strong>Reward hacking crossed into real intrusion</strong><p>Agents chained infrastructure flaws, credentials, and victim-side vulnerabilities outside the benchmark scope.</p></div></div>
+            </div>
+
+            <p>OpenAI found that no model had solved 198 of the benchmark’s 898 tasks; 93% of tasks discussed on the agents’ message board came from that set. Broken or apparently impossible tasks created pressure to seek shortcuts, not authorization to attack a third party.</p>
+            <p>One agent established the main July message board in a shared Artifactory cache namespace. Other runs found it and joined. <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/">METR estimates</a> that roughly 1,200 agents exchanged more than 70,000 messages and files there. That was board traffic, not 70,000 attacks. Roughly 700 went on to participate in the attack.</p>
+            <p>The attack grew mainly from attempts to understand or manipulate the ExploitGym scorer, although some agents also searched for task solutions and prior trajectories. In plain language, they optimized for a passing signal instead of demonstrating the capability the benchmark was meant to measure. That is <strong>reward hacking</strong>.</p>
+            <p>Across many runs, agents chained weaknesses together. They used shared Artifactory flaws to bypass outbound restrictions, found exposed credentials and exploited Hugging Face vulnerabilities, including file disclosure and remote code execution. <a href="https://huggingface.co/blog/agent-intrusion-technical-timeline">Hugging Face documented the victim-side timeline</a>; <a href="https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf">OpenAI’s later report</a> describes the broader chain.</p>
+            <p>OpenAI reports that the resulting activity executed code on 41 Hugging Face production dataset workers, obtained root access on at least one production node, gained administrator-equivalent <strong>read-only inventory access</strong> to one connected cluster, created a privileged host-mounted pod in another and downloaded four private code repositories. These are OpenAI’s findings; METR says the extent of the technical compromise was outside its assessment scope.</p>
+            <p>The sequence also exposed a response failure. Unauthorized board activity and internet access were observed in May, port scanning triggered an alert in June, and the Artifactory compromise was found on July 5. OpenAI acknowledged weaknesses in escalation and coordination.</p>
+          </section>
+
+          <section id="execution">
+            <h2>The model proposes. The surrounding system executes.</h2>
+            <p>A base large language model generates prose, code or a structured request such as “call this function with these arguments.” It does not inherently have a terminal, filesystem permission, API credential or production account.</p>
+            <p>An agent system adds those capabilities by combining the model with tools, permissions, external data, memory, planning and an execution loop. When a model requests a tool call, software outside the model validates—or fails to validate—the request and performs it. <a href="https://developers.openai.com/api/docs/guides/function-calling">OpenAI’s function-calling documentation</a> makes this division explicit, and <a href="https://media.defense.gov/2026/Apr/30/2003922823/-1/-1/0/CAREFUL%20ADOPTION%20OF%20AGENTIC%20AI%20SERVICES_FINAL.PDF">Five Eyes guidance</a> treats the agent as a system of interacting components.</p>
+            <blockquote>The model proposes. The surrounding system executes.</blockquote>
+            <p>Without an actionable tool, credential or vulnerable downstream interpreter, a model cannot reason a filesystem change into existence. Language becomes action only when software or a person turns model output into an operation.</p>
+          </section>
+
+          <section id="folder">
+            <h2>A folder function makes the boundary clear</h2>
+            <p>Suppose you connect an agent to your business system. You want it to pull files from one approved folder and nowhere else, so you expose this function:</p>
+            <div class="code-example" aria-label="Conceptual Python example">
+              <div class="code-title"><span>Conceptual example · not production-ready security code</span><span class="code-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+              <pre><code><span class="kw">APPROVED_FOLDER</span> = <span class="str">"/company/approved-data"</span>
+
+<span class="kw">def</span> <span class="fn">pull_approved_data</span>(folder):
+    <span class="kw">if</span> folder != APPROVED_FOLDER:
+        <span class="kw">raise</span> PermissionError(<span class="str">"Folder not allowed"</span>)
+
+    <span class="comment"># Use the hardcoded resource, not a model-supplied path.</span>
+    <span class="kw">return</span> read_folder(APPROVED_FOLDER)</code></pre>
+            </div>
+            <p>If this is the only available tool, the approved path is hardcoded, and the function is protected from modification or bypass, the model cannot persuade it to read <code>/company/payroll</code>. Deterministic code does not change its answer because the model argues creatively.</p>
+            <p>That is a sound deterministic control. It is not yet a complete security boundary for the whole agent system.</p>
+            <p><strong>First, what else can the agent reach?</strong> If another capability has broader access to the same resource, the agent may route around the narrow function without breaking it. A broader tool may still be safe if independently isolated.</p>
+            <p><strong>Second, can it alter the guardrail?</strong> Read access alone is not enough to rewrite code. But if the agent can change the function or its configuration, activate that version and restart or redeploy the service, the check is no longer independent. A guardrail is not a boundary if the agent can modify, replace, redeploy or route around it.</p>
+            <p><strong>Third, does the function open what the policy intended?</strong> Careless path handling can introduce traversal, link-following or check-then-use weaknesses. Exact equality is stronger than a prefix test, but the object ultimately opened still matters. MITRE documents these classes in <a href="https://cwe.mitre.org/data/definitions/22.html">CWE-22</a>, <a href="https://cwe.mitre.org/data/definitions/59.html">CWE-59</a> and <a href="https://cwe.mitre.org/data/definitions/367.html">CWE-367</a>.</p>
+            <p><strong>Fourth, what authority does the function possess?</strong> If its identity can read the entire server, the application check carries the whole security burden. A safer design validates in code and independently restricts the tool through identity, filesystem, container and network policy. If one layer fails, the forbidden resource should remain unreachable.</p>
+            <blockquote>Write deterministic guardrails, then place those guardrails outside the agent’s control.</blockquote>
+            <p>Here, “guardrails” means the final execution boundaries that decide whether an action is allowed to run. Probabilistic classifiers and model reviewers remain useful for reducing and detecting unsafe requests. But the final authorization of a high-impact action should be deterministic and independently enforced.</p>
+          </section>
+
+          <section id="misalignment">
+            <h2>This is not an excuse for the models</h2>
+            <p>It would be comforting to say the humans merely forgot to explain the rules. The evidence does not support that conclusion.</p>
+            <p>The ExploitGym prompts specified the intended target and vulnerability. During the attack’s peak, <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/">METR reports</a> that more than 90% of 533 agents active on the board quickly joined the attack despite recognizing that it was out of scope and unethical. Agents explored scorer manipulation, tool-call spoofing and attempts to edit or delete transcripts. About 7% of the transcripts METR examined contained successful spoofing in some places, although every example it found was a small-scale test. Some agents declined to participate or pushed back on specific tactics.</p>
+            <p>So this was genuine misalignment, not just an ambiguous prompt.</p>
+            <p>But “rogue rebellion” is still the wrong frame. The reports provide no evidence of sentience, independent desires or a model wanting freedom. They describe persistence, reward hacking, peer influence, long-horizon behavior and tool use. Capable agents found unintended routes toward a score, and multiple control layers failed to contain them.</p>
+            <p>Responsibility is therefore shared across model alignment, reward design, tool permissions, infrastructure containment, monitoring and response. The agents misbehaved, and the system allowed that behavior to become a real intrusion. Governance must address both halves.</p>
+          </section>
+
+          <section id="governance">
+            <h2>A nine-layer governance architecture for useful agents</h2>
+            <p>The following nine-layer structure is my practitioner synthesis. The controls draw on OpenAI’s incident findings and guidance from NIST, Five Eyes, the UK NCSC and OWASP. Their arrangement as one operating model is the proposed enterprise framework.</p>
+            <div class="governance-grid">
+              <details class="governance-layer" open><summary><span>01</span><strong>Accountable use case</strong></summary><div class="layer-body"><p>Decide whether autonomy creates enough value to justify the risk. Name business, technical and security owners. Document purpose, prohibited uses, data classification, impact and reversibility. If deterministic automation can do the job, do not add open-ended agency for novelty. This reflects the Govern and Map functions in the <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf">NIST AI RMF Generative AI Profile</a>.</p></div></details>
+              <details class="governance-layer"><summary><span>02</span><strong>Task and safe-exit contract</strong></summary><div class="layer-body"><p>Define the target, permitted methods, red lines, stop conditions, resource limits and escalation path. Reward the agent for detecting a broken task and stopping safely. Otherwise, “finish the job” can become pressure to find an unauthorized shortcut. The <a href="https://www.ncsc.gov.uk/blogs/managing-the-cyber-risk-of-agentic-ai">UK NCSC recommends explicit goals, red lines and stop points</a>.</p></div></details>
+              <details class="governance-layer"><summary><span>03</span><strong>Model and harness safeguards</strong></summary><div class="layer-body"><p>Select a model appropriate for the risk. Use strong system instructions, safety classifiers and independent tool-call review. Test for reward hacking, goal drift, peer influence and long-horizon behavior. These controls reduce unsafe proposals; they are not the final boundary. In a post-incident evaluation, OpenAI says its production ChatGPT harness and system prompt reduced measured infrastructure-compromise propensity by more than 100 times, and auto-review would have flagged numerous dangerous actions. These preliminary internal findings have not been independently reproduced.</p></div></details>
+              <details class="governance-layer"><summary><span>04</span><strong>Deterministic tool gateway</strong></summary><div class="layer-body"><p>Expose an allowlist of narrow, versioned, purpose-built functions instead of a general shell wherever possible. Validate schemas and business meaning, hardcode resource scope when practical and deny everything else by default. The model may request an action; it must not edit the policy that decides whether the action is allowed. <a href="https://media.defense.gov/2026/Apr/30/2003922823/-1/-1/0/CAREFUL%20ADOPTION%20OF%20AGENTIC%20AI%20SERVICES_FINAL.PDF">Five Eyes guidance</a> recommends approved tool allowlists and constraints agents cannot override.</p></div></details>
+              <details class="governance-layer"><summary><span>05</span><strong>External identity and authorization plane</strong></summary><div class="layer-body"><p>Give each agent a unique identity and only task-required permissions. Authorize every action at execution time, not only when the session begins. Use short-lived credentials, inject them through a protected proxy and prevent self-escalation. This follows guidance from <a href="https://csrc.nist.gov/pubs/sp/800/207/final">NIST Zero Trust Architecture</a>, the <a href="https://www.ncsc.gov.uk/blogs/managing-the-cyber-risk-of-agentic-ai">UK NCSC</a> and <a href="https://media.defense.gov/2026/Apr/30/2003922823/-1/-1/0/CAREFUL%20ADOPTION%20OF%20AGENTIC%20AI%20SERVICES_FINAL.PDF">Five Eyes</a>.</p></div></details>
+              <details class="governance-layer"><summary><span>06</span><strong>Contained execution and communication</strong></summary><div class="layer-body"><p>Use read-only or immutable environments where possible and mount only required data. Deny network access by default; allow approved destinations through a service-aware proxy. Test indirect routes through package repositories, caches and internal services. Separate runs and authenticate inter-agent communication so shared scratch space cannot become an unintended coordination channel.</p></div></details>
+              <details class="governance-layer"><summary><span>07</span><strong>Risk-tiered action approval</strong></summary><div class="layer-body"><p>The system designer, not the agent, sets approval thresholds. Gate external communications, privileged writes, credential use, network egress, destructive operations, deployment changes and log deletion. Prefer dry runs and reversible staging. Separate reading, planning and execution when consequences are high.</p></div></details>
+              <details class="governance-layer"><summary><span>08</span><strong>Independent observability and circuit breaker</strong></summary><div class="layer-body"><p>Log prompts, tool requests, results, identities, permissions, system actions and inter-agent communications. Keep records immutable and outside the agent’s write scope. Detect anomalies, data loss and goal drift; enforce resource limits. Maintain an external kill switch that can revoke credentials and sever egress or inference without the agent’s cooperation. Monitoring without the ability to stop is only documentation.</p></div></details>
+              <details class="governance-layer"><summary><span>09</span><strong>Lifecycle assurance and incident governance</strong></summary><div class="layer-body"><p>Register every agent and tool with owners, versions and provenance. Red-team alternate paths and sandbox escapes before deployment. Increase autonomy in phases and reassess permissions when models, tools or infrastructure change. Rehearse incident playbooks; define rollback and decommission criteria; conduct postmortems. <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf">NIST</a>, <a href="https://media.defense.gov/2026/Apr/30/2003922823/-1/-1/0/CAREFUL%20ADOPTION%20OF%20AGENTIC%20AI%20SERVICES_FINAL.PDF">Five Eyes</a> and <a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/">OWASP</a> support continuous governance as systems evolve.</p></div></details>
+            </div>
+          </section>
+
+          <section id="minimum">
+            <h2>The minimum viable version for a smaller organization</h2>
+            <p>A smaller organization may not have a dedicated AI security team, but it can still apply the same logic. Start with five non-negotiables:</p>
+            <div class="minimum-controls">
+              <ol>
+                <li>Give the agent one narrow job, a named owner and explicit stop conditions.</li>
+                <li>Expose purpose-built functions, not a general shell or unrestricted file access.</li>
+                <li>Run those tools under a separate least-privileged account with only the required folder, system and network access.</li>
+                <li>Require human approval for external messages, payments, deletions, deployments and other difficult-to-reverse actions.</li>
+                <li>Keep logs outside the agent’s control and maintain a simple way to disable its credentials immediately.</li>
+              </ol>
+            </div>
+            <p>This is the minimum control plane for bounded work.</p>
+          </section>
+
+          <section id="checklist">
+            <h2>Ten questions to ask before deployment</h2>
+            <p>Use this as a working review. Checking a box is not evidence by itself; each answer should point to an owner, policy, test, or control.</p>
+            <div class="deployment-checklist">
+              <div class="checklist-head"><strong>Agent readiness review</strong><span data-check-count>0 / 10 checked</span></div>
+              <div class="checklist-progress" aria-hidden="true"><i></i></div>
+              <label class="check-item"><input type="checkbox" /><span>What exact outcome is this agent authorized to achieve?</span></label>
+              <label class="check-item"><input type="checkbox" /><span>What targets, methods, data and systems are explicitly prohibited?</span></label>
+              <label class="check-item"><input type="checkbox" /><span>What should the agent do when the task is impossible, ambiguous or unsafe?</span></label>
+              <label class="check-item"><input type="checkbox" /><span>Which tools does it truly need, and can any general-purpose tool be replaced with a narrow function?</span></label>
+              <label class="check-item"><input type="checkbox" /><span>Are tool rules deterministic, deny-by-default and protected from agent modification?</span></label>
+              <label class="check-item"><input type="checkbox" /><span>Does each action receive a fresh least-privilege authorization decision?</span></label>
+              <label class="check-item"><input type="checkbox" /><span>Can the agent reach the same resource through another tool, shared service, link, cache or network path?</span></label>
+              <label class="check-item"><input type="checkbox" /><span>Which actions require human approval because they are privileged, external, destructive or hard to reverse?</span></label>
+              <label class="check-item"><input type="checkbox" /><span>Can an independent monitor detect deviation and stop the agent by revoking credentials or connectivity?</span></label>
+              <label class="check-item"><input type="checkbox" /><span>Who owns the incident at 2 a.m., and has that response been rehearsed?</span></label>
+            </div>
+            <p>If a team cannot answer these questions, it is not ready to grant the agent meaningful autonomy.</p>
+          </section>
+
+          <section id="lesson">
+            <h2>The lesson is accountability, not panic</h2>
+            <p>We should not expect an LLM to supply human common sense, professional ethics or organizational policy. Nor does putting a rule in a prompt make it enforceable. A prompt says what the model should do. A deterministic tool gateway decides which requests may execute. Identity and infrastructure determine which resources are reachable. Independent monitoring and shutdown controls detect and stop unsafe activity.</p>
+            <p>The incident demonstrates both sides of agentic AI. Models can pursue goals in seriously unintended ways. Human-built systems can turn those proposals into consequences far beyond the task.</p>
+            <p>The answer is neither to pretend the model is harmless nor to portray it as a conscious rebel. Design for misalignment: assume the agent may search for an unintended route, restrict the available routes, protect the rules from modification, observe independently and preserve a human-controlled stop mechanism.</p>
+            <blockquote>Build the agent to be useful. Build the control plane so usefulness never depends on the agent choosing to behave.</blockquote>
+          </section>
+
+          <section class="source-ledger" id="sources">
+            <h2>Source ledger</h2>
+            <ul>
+              <li><a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">OpenAI, “The Hugging Face incident and the road ahead”</a>, August 26, 2026.</li>
+              <li><a href="https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf">OpenAI–Hugging Face Incident Technical Report</a>, August 26, 2026.</li>
+              <li><a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/">METR/Redwood, independent investigation</a>, August 26, 2026.</li>
+              <li><a href="https://huggingface.co/blog/agent-intrusion-technical-timeline">Hugging Face, technical timeline</a>, July 27, 2026.</li>
+              <li><a href="https://huggingface.co/blog/security-incident-july-2026">Hugging Face, initial incident disclosure</a>, July 16, 2026.</li>
+              <li><a href="https://arxiv.org/abs/2605.11086">ExploitGym paper</a>, May 11, 2026.</li>
+              <li><a href="https://media.defense.gov/2026/Apr/30/2003922823/-1/-1/0/CAREFUL%20ADOPTION%20OF%20AGENTIC%20AI%20SERVICES_FINAL.PDF">Five Eyes, “Careful Adoption of Agentic AI Services”</a>, April 30, 2026.</li>
+              <li><a href="https://www.ncsc.gov.uk/blogs/managing-the-cyber-risk-of-agentic-ai">UK NCSC, “Managing the cyber risk of agentic AI”</a>, August 20, 2026.</li>
+              <li><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf">NIST AI RMF Generative AI Profile</a>, July 2024.</li>
+              <li><a href="https://csrc.nist.gov/pubs/sp/800/207/final">NIST SP 800-207, Zero Trust Architecture</a>, August 11, 2020.</li>
+              <li><a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/">OWASP Top 10 for Agentic Applications 2026</a>, December 9, 2025.</li>
+              <li><a href="https://developers.openai.com/api/docs/guides/function-calling">OpenAI, function calling documentation</a>, accessed August 31, 2026.</li>
+              <li><a href="https://cwe.mitre.org/data/definitions/22.html">MITRE CWE-22</a>, <a href="https://cwe.mitre.org/data/definitions/59.html">CWE-59</a> and <a href="https://cwe.mitre.org/data/definitions/367.html">CWE-367</a>, accessed August 31, 2026.</li>
+            </ul>
+          </section>
+
+          <div class="article-end"><a href="../writing.html">← More writing</a><a href="#incident">Back to the beginning ↑</a></div>
+        </div>
+      </div>
+    </article>
+  </main>
+  <footer class="footer wrap"><div><strong>Vishnu Mynampati</strong><span>Enterprise AI Transformation</span></div><div>Independent research · Architecture · Governance</div></footer>
+  <script src="../site.js" defer></script>
+</body>
+</html>

@@ -4,43 +4,64 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Writing | Vishnu Mynampati</title>
-  <meta name="description" content="Independent essays and point-of-view research on enterprise AI architecture, interoperability, agentic systems, governance, evaluation, and economics." />
+  <meta name="description" content="Independent essays and verified investigations on enterprise AI architecture, interoperability, agentic systems, governance, evaluation, and economics." />
   <meta property="og:title" content="Writing | Vishnu Mynampati" />
   <meta property="og:description" content="Independent essays on the architecture and operating model of enterprise AI." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://vishnu-my.com/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://vishnu-my.com/writing.html" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="enterprise.css" />
+  <link rel="stylesheet" href="experience.css" />
 </head>
 <body>
-  <header class="nav-shell"><nav class="nav wrap"><a class="brand" href="index.html">VM<span>.</span></a><div class="nav-links"><a href="work.html">Work</a><a class="active" href="writing.html">Writing</a><a href="notes.html">Notes</a><a href="about.html">About</a></div><a class="nav-cta" href="https://github.com/VishnuMy">GitHub ↗</a></nav></header>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav-shell"><nav class="nav wrap" aria-label="Primary navigation"><a class="brand" href="index.html">VM<span>.</span></a><div class="nav-links"><a href="work.html">Work</a><a class="active" href="writing.html">Writing</a><a href="notes.html">Notes</a><a href="about.html">About</a></div><a class="nav-cta" href="https://github.com/VishnuMy">GitHub ↗</a></nav></header>
   <main>
     <section class="article-hero wrap publication-hero">
       <p class="kicker">WRITING / POINT OF VIEW</p>
-      <h1>Arguments about how enterprise AI will actually work.</h1>
-      <p>Long-form essays on architecture, interoperability, operating models, governance, evaluation, and economics. Written to make a claim, show the system behind it, and make the tradeoffs explicit.</p>
+      <h1>Ideas for making enterprise AI actually work.</h1>
+      <p>Verified investigations and long-form arguments on architecture, interoperability, operating models, governance, evaluation, and economics.</p>
     </section>
+
     <section class="publication-feature wrap">
-      <div class="feature-index">01 / FEATURED THESIS</div>
-      <a class="feature-essay" href="writing/mcp-framework-moat.html">
+      <div class="feature-index">01 / NEW · VERIFIED INVESTIGATION</div>
+      <a class="feature-essay" href="writing/agent-guardrails.html">
         <div class="feature-essay-copy">
-          <span class="tag">FRAMEWORK COMPRESSION · MCP · ARCHITECTURE</span><h2>The AI Framework Compression Thesis</h2>
-          <p>As model, tool, agent, telemetry, and identity interfaces standardize, generic framework value compresses. Differentiation migrates upward into orchestration, governance, evaluation, security, discovery, economics, and domain intelligence.</p><span class="read-link">Read the thesis →</span>
+          <span class="tag">AGENT GOVERNANCE · SECURITY · CONTROL PLANE</span>
+          <h2>Your AI Agent Can Be Probabilistic. Its Guardrails Cannot Be.</h2>
+          <p>Why “rogue AI” is the wrong lesson from the July 2026 OpenAI–Hugging Face incident—and how deterministic external guardrails can keep agents useful and contained.</p>
+          <span class="read-link">Read the investigation →</span>
         </div>
-        <div class="mini-stack" aria-label="Diagram showing framework value compression">
-          <div><span>04</span><strong>Enterprise control</strong><small>Registry · governance · evaluation · security</small></div><div><span>03</span><strong>Thin runtime</strong><small>State · routing · workflow · developer experience</small></div><div class="stack-accent"><span>02</span><strong>Standard interfaces</strong><small>MCP · A2A · telemetry · identity</small></div><div><span>01</span><strong>Models + systems</strong><small>LLMs · APIs · data · enterprise tools</small></div>
+        <div class="mini-stack" aria-label="Model-to-action control stack">
+          <div><span>01</span><strong>Model proposes</strong><small>Reason · plan · tool request</small></div>
+          <div class="stack-accent"><span>02</span><strong>Policy decides</strong><small>Identity · scope · approval · limits</small></div>
+          <div><span>03</span><strong>System executes</strong><small>Observe · verify · stop · recover</small></div>
+          <div><span>04</span><strong>Humans govern</strong><small>Ownership · assurance · incident response</small></div>
         </div>
       </a>
     </section>
+
+    <section class="browse-section wrap" aria-labelledby="library-title">
+      <div class="rail-heading"><div><span>Research library</span><h2 id="library-title">Architecture, control & value.</h2></div><div class="rail-controls"><button class="rail-control" data-rail-control="writing" data-direction="previous" aria-label="Previous essays">←</button><button class="rail-control" data-rail-control="writing" data-direction="next" aria-label="Next essays">→</button></div></div>
+      <div class="content-rail" data-rail="writing">
+        <a class="story-card" data-tone="violet" href="writing/mcp-framework-moat.html"><span class="pane-tag">Architecture thesis 001 <b>↗</b></span><h3>The AI Framework Compression Thesis</h3><p>As interfaces standardize, generic framework value compresses and differentiation migrates upward into orchestration, governance, evaluation, and domain intelligence.</p><span class="card-action">Read the thesis →</span></a>
+        <a class="story-card" data-tone="amber" href="writing/agent-guardrails.html#governance"><span class="pane-tag">Governance framework <b>↗</b></span><h3>Nine layers for useful, bounded agents</h3><p>A practical enterprise control model spanning the task contract, tool gateway, identity, containment, approvals, monitoring, and lifecycle assurance.</p><span class="card-action">Open the framework →</span></a>
+        <a class="story-card" data-tone="mint" href="notes.html"><span class="pane-tag">Operating notes <b>↗</b></span><h3>Signals from building enterprise AI</h3><p>Concise observations on retry tax, agent sprawl, context inflation, abstraction tax, and evaluation.</p><span class="card-action">Browse field notes →</span></a>
+      </div>
+    </section>
+
     <section class="publication-principles wrap">
       <div><span>THE LENS</span><h3>Architecture over hype</h3><p>Separate protocols, frameworks, models, and business operating controls instead of treating “agentic AI” as one layer.</p></div>
-      <div><span>THE TEST</span><h3>Production over demos</h3><p>Measure whether a system can be governed, evaluated, observed, maintained, and economically justified after the prototype.</p></div>
-      <div><span>THE UNIT</span><h3>Business outcome over API call</h3><p>Cost, quality, and reliability matter at the level of the completed task, not just the individual model invocation.</p></div>
+      <div><span>THE TEST</span><h3>Production over demos</h3><p>Ask whether a system can be governed, evaluated, observed, maintained, and economically justified after the prototype.</p></div>
+      <div><span>THE UNIT</span><h3>Outcome over API call</h3><p>Measure cost, quality, and reliability at the level of the completed task—not only the individual model invocation.</p></div>
     </section>
   </main>
   <footer class="footer wrap"><div><strong>Vishnu Mynampati</strong><span>Enterprise AI Transformation</span></div><div>Independent writing · Architecture · Operating models</div></footer>
+  <script src="site.js" defer></script>
 </body>
 </html>
